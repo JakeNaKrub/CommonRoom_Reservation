@@ -8,7 +8,7 @@ The project is already **hosted on Firebase**, allowing students to book rooms d
 
 ## 🌐 Live Application
 
-[Access the app here]([https://commonroom-reserve.web.app/]) *(replace with actual Firebase hosting URL)*
+[Access the app here]([https://commonroom-reserve.web.app/])
 
 ---
 
