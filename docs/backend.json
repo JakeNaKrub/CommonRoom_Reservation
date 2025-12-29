@@ -1,0 +1,68 @@
+{
+  "entities": {
+    "Reservation": {
+      "$schema": "http://json-schema.org/draft-07/schema#",
+      "title": "Reservation",
+      "type": "object",
+      "description": "Represents a room reservation.",
+      "properties": {
+        "meetingName": {
+          "type": "string",
+          "description": "Name of the meeting."
+        },
+        "personName": {
+          "type": "string",
+          "description": "Name of the person making the reservation."
+        },
+        "mobileNumber": {
+          "type": "string",
+          "description": "Mobile number of the person making the reservation."
+        },
+        "date": {
+          "type": "string",
+          "description": "Date of the reservation.",
+          "format": "date-time"
+        },
+        "startTime": {
+          "type": "string",
+          "description": "Start time of the reservation."
+        },
+        "endTime": {
+          "type": "string",
+          "description": "End time of the reservation."
+        },
+        "roomSize": {
+          "type": "string",
+          "description": "Size of the room (Large/Small)."
+        },
+        "pin": {
+          "type": "string",
+          "description": "Pin required for editing or deleting the reservation."
+        }
+      },
+      "required": [
+        "meetingName",
+        "personName",
+        "mobileNumber",
+        "date",
+        "startTime",
+        "endTime",
+        "roomSize",
+        "pin"
+      ]
+    }
+  },
+  "auth": {
+    "providers": [
+      "anonymous"
+    ]
+  },
+  "firestore": {
+    "/reservations/{reservationId}": {
+      "schema": {
+        "$ref": "#/entities/Reservation"
+      },
+      "description": "Stores all room reservations."
+    }
+  }
+}
