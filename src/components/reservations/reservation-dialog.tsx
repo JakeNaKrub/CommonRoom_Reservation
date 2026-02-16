@@ -63,7 +63,9 @@ const ReservationSchema = ReservationBaseSchema.extend({
     path: ["endTime"],
 });
 
-const UpdateReservationSchema = ReservationBaseSchema.refine((data) => data.startTime < data.endTime, {
+const UpdateReservationSchema = ReservationBaseSchema.extend({
+    status: z.enum(["pending", "approved", "declined"]),
+}).refine((data) => data.startTime < data.endTime, {
     message: "End time must be after start time",
     path: ["endTime"],
 });
@@ -119,6 +121,7 @@ export function ReservationDialog({
       endTime: "",
       roomSize: undefined,
       pin: "",
+      status: "pending",
     },
   });
   
@@ -136,6 +139,7 @@ export function ReservationDialog({
           endTime: "",
           roomSize: undefined,
           pin: "",
+          status: "pending",
       });
     }
   }, [reservation, isEditMode, form, isDialogOpen]);
@@ -351,6 +355,30 @@ export function ReservationDialog({
                           <FormMessage />
                       </FormItem>
                       )}
+                  />
+                )}
+                 {isEditMode && (
+                  <FormField
+                    control={form.control}
+                    name="status"
+                    render={({ field }) => (
+                      <FormItem className="pt-2">
+                        <FormLabel>Status</FormLabel>
+                        <Select onValueChange={field.onChange} value={field.value}>
+                          <FormControl>
+                            <SelectTrigger>
+                              <SelectValue placeholder="Select a status" />
+                            </SelectTrigger>
+                          </FormControl>
+                          <SelectContent>
+                            <SelectItem value="pending">Pending</SelectItem>
+                            <SelectItem value="approved">Approved</SelectItem>
+                            <SelectItem value="declined">Declined</SelectItem>
+                          </SelectContent>
+                        </Select>
+                        <FormMessage />
+                      </FormItem>
+                    )}
                   />
                 )}
               </div>

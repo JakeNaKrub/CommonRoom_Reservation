@@ -7,6 +7,7 @@ export interface ReservationData {
   endTime: string; // e.g., "10:00"
   roomSize: "small" | "large";
   pin: string;
+  status: "pending" | "approved" | "declined";
 }
 
 export interface Reservation extends ReservationData {

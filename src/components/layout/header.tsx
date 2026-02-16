@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import Link from "next/link";
 import { Moon, Info } from "lucide-react";
@@ -13,12 +13,20 @@ import {
   AlertDialogTitle,
   AlertDialogTrigger,
 } from "@/components/ui/alert-dialog";
+import { useAuth } from "@/firebase/provider";
+import { getAuth, signOut } from "firebase/auth";
 
 export function Header() {
+  const { user } = useAuth() ?? {};
   // A full theme toggle implementation is out of scope.
   // This is a placeholder.
   const toggleTheme = () => {
     document.documentElement.classList.toggle("dark");
+  };
+
+  const onLogout = () => {
+    const auth = getAuth();
+    signOut(auth);
   };
 
   return (
@@ -30,9 +38,7 @@ export function Header() {
         <div className="flex items-center gap-2">
           <AlertDialog>
             <AlertDialogTrigger asChild>
-              <Button variant="ghost">
-                Rules
-              </Button>
+              <Button variant="ghost">Rules</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
               <AlertDialogHeader>
@@ -49,6 +55,16 @@ export function Header() {
               </AlertDialogFooter>
             </AlertDialogContent>
           </AlertDialog>
+
+          {user ? (
+            <Button onClick={onLogout} variant="ghost">
+              Logout
+            </Button>
+          ) : (
+            <Button asChild variant="ghost">
+              <Link href="/admin/login">Back-office</Link>
+            </Button>
+          )}
 
           <Button variant="ghost" size="icon" onClick={toggleTheme}>
             <Moon className="h-5 w-5" />

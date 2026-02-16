@@ -23,7 +23,8 @@ const RESERVATIONS_COLLECTION = 'reservations';
  */
 export async function createReservation(firestore: Firestore, data: ReservationData): Promise<Reservation> {
   const collectionRef = collection(firestore, RESERVATIONS_COLLECTION);
-  const docRef = await addDoc(collectionRef, data)
+  const dataWithStatus = { ...data, status: 'pending' as const };
+  const docRef = await addDoc(collectionRef, dataWithStatus)
     .catch(error => {
       errorEmitter.emit(
         'permission-error',
@@ -37,7 +38,7 @@ export async function createReservation(firestore: Firestore, data: ReservationD
       throw error;
     });
 
-  return { id: docRef.id, ...data };
+  return { id: docRef.id, ...dataWithStatus };
 }
 
 /**
