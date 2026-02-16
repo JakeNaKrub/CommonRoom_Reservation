@@ -1,46 +1,140 @@
 # Common Room Reservation System
 
-## Project Description
+A **web application** for reserving and managing common/meeting rooms, built with **Next.js**, **Firebase**, and **Genkit**.  
 
-This project is a web application for a common room (meeting room) reservation system. It is built with Next.js and utilizes Firebase for backend services and data storage, and Genkit for generative AI features.
+The project is already **hosted on Firebase**, allowing students to book rooms directly online.
 
-## Project Intention
+---
 
-The main goal of this project is to provide students of the ISE department with a simple and efficient way to reserve and manage meeting rooms. By leveraging modern web technologies and the power of generative AI, this project aims to create a streamlined and user-friendly reservation experience.
+## 🌐 Live Application
 
-## How to Run the Project
+[Access the app here](https://commonroom-reserve.web.app/)
 
-1.  **Install Dependencies:**
-    ```bash
-    npm install
-    ```
+---
 
-2.  **Run the Development Server:**
-    ```bash
-    npm run dev
-    ```
-    The application will be available at [http://localhost:9002](http://localhost:9002).
+## 🧠 Project Overview
 
-3.  **Run the Genkit AI Development Server:**
-    ```bash
-    npm run genkit:dev
-    ```
+This system provides an intuitive interface to:
 
-## How to Debug the Project
+- Browse available common rooms
+- Make reservations
+- View, update, or cancel bookings
+- (Optional) AI-assisted scheduling with Genkit  
 
-### Frontend (Next.js)
+It’s aimed at **ISE students and staff !** and other users needing easy room management.
 
-*   **Browser Developer Tools:** Use the developer tools in your browser (e.g., Chrome DevTools) to inspect the DOM, check for console errors, and debug JavaScript code.
-*   **React Developer Tools:** Use the React Developer Tools browser extension to inspect the component hierarchy, props, and state.
-*   **`console.log()`:** Add `console.log()` statements in your components to output variable values and trace the execution flow.
+---
 
-### Backend (Genkit/Firebase)
+## 🚀 Features
 
-*   **Terminal Logs:** Check the terminal where you are running the `genkit:dev` script for any logs or error messages from the backend.
-*   **Firebase Emulator Suite:** For a more robust debugging experience, consider using the [Firebase Emulator Suite](https://firebase.google.com/docs/emulator-suite) to run Firebase services locally. This allows you to inspect data in your local Firestore database and see logs from Cloud Functions.
-*   **`console.log()`:** You can also use `console.log()` in your Genkit flows and other backend code. The output will appear in the terminal where the development server is running.
+✔ Responsive **Next.js** frontend  
+✔ Firebase **Authentication** and **Firestore** backend  
+✔ Generative AI with **Genkit**  
+✔ Mobile-friendly and modern UI  
+✔ Easy local development for updates  
 
-### Static Analysis
+---
 
-*   **Linting:** Run `npm run lint` to identify and fix potential issues in your code.
-*   **Type Checking:** Run `npm run typecheck` to check for TypeScript errors.
+## 📦 Tech Stack
+
+| Layer      | Technology        |
+|-----------|-----------------|
+| Frontend  | Next.js          |
+| Backend   | Firebase         |
+| Database  | Firestore        |
+| AI        | Genkit           |
+| Language  | TypeScript       |
+
+---
+
+## 💻 Local Development
+
+If you want to **update or test the project locally**, follow these steps:
+
+1. **Clone the repository**
+
+```bash
+git clone https://github.com/JakeNaKrub/CommonRoom_Reservation.git
+cd CommonRoom_Reservation
+```
+
+2. **Install dependencies**
+
+```bash
+npm install
+```
+
+3. **Configure Firebase**
+
+Create a `.env.local` file with your Firebase credentials:
+
+```
+NEXT_PUBLIC_FIREBASE_API_KEY=<your_api_key>
+NEXT_PUBLIC_FIREBASE_AUTH_DOMAIN=<your_auth_domain>
+NEXT_PUBLIC_FIREBASE_PROJECT_ID=<your_project_id>
+NEXT_PUBLIC_FIREBASE_STORAGE_BUCKET=<your_storage_bucket>
+NEXT_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=<your_sender_id>
+NEXT_PUBLIC_FIREBASE_APP_ID=<your_app_id>
+```
+
+4. **Run locally**
+
+```bash
+npm run dev
+```
+
+The app will be available at:
+
+```
+http://localhost:9002
+```
+
+5. **Deploy updates**
+
+```bash
+firebase deploy
+```
+
+---
+
+## 🔐 Authentication
+
+Uses **Firebase Authentication**. Providers like **Email/Password** or **Google** can be enabled via the Firebase console.
+
+---
+
+## 📁 Project Structure
+
+```
+/
+├── src/
+│   ├── components/
+│   ├── pages/
+│   └── styles/
+├── .firebase/
+├── public/
+├── genkit/
+├── firebase.json
+├── next.config.ts
+├── package.json
+└── README.md
+```
+
+---
+
+## 🧩 Contributing
+
+Contributions are welcome!  
+
+- Open issues for bugs or suggestions  
+- Submit pull requests for improvements  
+
+---
+
+## 📝 License
+
+No license specified (can be MIT if needed)
+
+---
+
+> **Note:** This README was generated entirely with the assistance of AI.
